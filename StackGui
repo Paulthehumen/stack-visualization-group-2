@@ -11,3 +11,11 @@ public class StackGUI extends JPanel {
     private final JLabel status = new JLabel("Ready");
     private final JLabel sizeLabel = new JLabel();
 }
+//Controll layout
+private JPanel buildControls() {
+        JPanel controls = new JPanel(new FlowLayout());
+        controls.add(buildInputArea());  
+        controls.add(buildMainButtons());    
+        controls.add(buildExtraButtons());   
+        return controls;
+    }
