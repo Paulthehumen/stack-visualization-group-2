@@ -1,0 +1,21 @@
+public class ArrayStack {
+    private final int[] stack;
+    private int top;
+    private final int capacity;
+
+    public ArrayStack() {
+        this(10);
+    }
+
+    public ArrayStack(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException(
+                "Capacity must be positive"
+            );
+        }
+
+        this.capacity = capacity;
+        this.stack = new int[capacity];
+        this.top = -1;
+    }
+}
