@@ -1,0 +1,13 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+
+public class StackGUI extends JPanel {
+    private static final int CAPACITY = 10;
+
+    private final ArrayStack stack = new ArrayStack(CAPACITY);
+    private final StackPanel drawing = new StackPanel(CAPACITY);
+    private final JTextField input = new JTextField(6);
+    private final JLabel status = new JLabel("Ready");
+    private final JLabel sizeLabel = new JLabel();
+}
