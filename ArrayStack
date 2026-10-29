@@ -48,4 +48,13 @@ public int peek() {
 
     return stack[top];
 }
+
+public boolean isEmpty() {
+    return top == -1;
+}
+
+public boolean isFull() {
+    return top == capacity - 1;
+}
+
 }
