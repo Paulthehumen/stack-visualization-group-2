@@ -4,7 +4,7 @@
  * Java Swing. Draws stack slots, values, and highlights the
  * top element when PEEK is used.
  *
- * Programmed by: [Your Name] [Course] [Section] [Subject]
+ * Programmed by: [Kent Clark I. Española] [BSIT] [48160] [DATA STRUCTURES AND ALGORITHMS]
  *
  * Last Modified: October 29, 2026
  *
@@ -125,12 +125,54 @@ public class StackPanel extends JPanel {
                     g2.drawString(value, textX, textY);
                 }
             }
-            g2.setColor(Color.BLACK);
-            g2.drawString(
-                "Stack Visualizer",
-                20,
-                25
-            );
+          
+            // Label the top element.
+            if (items.length > 0) {
+                int topY = startY
+                    + (capacity - items.length) * slotHeight;
+
+                g2.setColor(Color.BLACK);
+                g2.setFont(new Font(
+                    "SansSerif", Font.BOLD, 12
+                ));
+
+                g2.drawString(
+                    "TOP",
+                    startX + slotWidth + 12,
+                    topY + slotHeight / 2 + 5
+                );
+            }
+
+            // Display a message when the stack is empty.
+            if (items.length == 0) {
+                g2.setColor(Color.GRAY);
+                g2.setFont(new Font(
+                    "SansSerif", Font.ITALIC, 14
+                ));
+
+                String message = "Stack is empty";
+                FontMetrics fm = g2.getFontMetrics();
+
+                g2.drawString(
+                    message,
+                    (panelWidth - fm.stringWidth(message)) / 2,
+                    startY + totalHeight + 28
+                );
+            }
+
+            // Indicate when PEEK highlights the top element.
+            if (highlightTop && items.length > 0) {
+                g2.setColor(new Color(150, 90, 0));
+                g2.setFont(new Font(
+                    "SansSerif", Font.BOLD, 12
+                ));
+
+                g2.drawString(
+                    "Top element highlighted",
+                    12,
+                    panelHeight - 12
+                );
+            }
 
         } finally {
             g2.dispose();
