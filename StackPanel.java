@@ -66,7 +66,65 @@ public class StackPanel extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON
             );
 
-            // Stack drawing will be added in Commit 2.
+             int panelWidth = getWidth();
+            int panelHeight = getHeight();
+
+            int slotWidth = Math.min(220, panelWidth - 60);
+            slotWidth = Math.max(80, slotWidth);
+
+            int slotHeight = Math.min(
+                32,
+                Math.max(20, (panelHeight - 100) / capacity)
+            );
+
+            int totalHeight = slotHeight * capacity;
+            int startX = (panelWidth - slotWidth) / 2;
+            int startY = (panelHeight - totalHeight) / 2;
+
+            g2.setColor(Color.BLACK);
+            g2.setFont(new Font(
+                "SansSerif", Font.BOLD, 16
+            ));
+            g2.drawString("Stack Visualizer", startX, startY - 12);
+
+            // Draw each stack slot from top to bottom.
+            for (int i = 0; i < capacity; i++) {
+                int x = startX;
+                int y = startY
+                    + (capacity - 1 - i) * slotHeight;
+
+                boolean occupied = i < items.length;
+                boolean isTop = occupied
+                    && i == items.length - 1;
+
+                if (occupied && isTop && highlightTop) {
+                    g2.setColor(new Color(255, 220, 120));
+                } else if (occupied) {
+                    g2.setColor(new Color(180, 220, 250));
+                } else {
+                    g2.setColor(new Color(245, 245, 245));
+                }
+
+                g2.fillRect(x, y, slotWidth, slotHeight);
+
+                g2.setColor(Color.DARK_GRAY);
+                g2.drawRect(x, y, slotWidth, slotHeight);
+
+                if (occupied) {
+                    String value = String.valueOf(items[i]);
+                    FontMetrics fm = g2.getFontMetrics();
+
+                    int textX = x
+                        + (slotWidth - fm.stringWidth(value)) / 2;
+
+                    int textY = y
+                        + (slotHeight - fm.getHeight()) / 2
+                        + fm.getAscent();
+
+                    g2.setColor(Color.BLACK);
+                    g2.drawString(value, textX, textY);
+                }
+            }
             g2.setColor(Color.BLACK);
             g2.drawString(
                 "Stack Visualizer",
