@@ -10,7 +10,7 @@ public class StackGUI extends JPanel {
     private final JTextField input = new JTextField(6);
     private final JLabel status = new JLabel("Ready");
     private final JLabel sizeLabel = new JLabel();
-}
+
 //Controll layout
 private JPanel buildControls() {
         JPanel controls = new JPanel(new FlowLayout());
