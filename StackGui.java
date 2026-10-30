@@ -157,5 +157,47 @@ private Integer readValue() {
     }
 }
 
-    
+// Adds a value to the top of the stack.
+private void onPush() {
+    Integer value = readValue();
+
+    if (value == null) {
+        return;
+    }
+
+    try {
+        stack.push(value);
+        status.setText("Pushed: " + value);
+        input.setText("");
+    } catch (IllegalStateException ex) {
+        status.setText("Stack is full. Cannot push.");
+    }
+
+    refresh(false);
+}
+
+// Removes the top value from the stack.
+private void onPop() {
+    try {
+        int value = stack.pop();
+        status.setText("Popped: " + value);
+    } catch (IllegalStateException ex) {
+        status.setText("Stack is empty. Cannot pop.");
+    }
+
+    refresh(false);
+}
+
+// Displays the top value without removing it.
+private void onPeek() {
+    try {
+        int value = stack.peek();
+        status.setText("Top element: " + value);
+        refresh(true);
+    } catch (IllegalStateException ex) {
+        status.setText("Stack is empty. Nothing to peek.");
+        refresh(false);
+    }
+}
+
 
