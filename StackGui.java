@@ -81,7 +81,7 @@ public class StackGUI extends JPanel {
  * components and implementing reusable button functionality.
  *
  * AI Prompt:
- * "Help divide the Java Swing StackGUI extra buttons,
+ * "Help implement the Java Swing StackGUI extra buttons,
  * status bar, and reusable button creation method into
  * three development stages with descriptions."
  */
@@ -120,4 +120,42 @@ public class StackGUI extends JPanel {
 
         return button;
     }
+
+
+    /*Name: Joseph Empal
+ * Course/Year: BSIT 2
+ * Subject: DATA STRUCTURES AND ALGORITHMS
+ * Description:
+ * This section validates the value entered by the user.
+ * It checks if the input is a valid integer and uses
+ * try-catch to handle invalid input.
+ *
+ * Acknowledgements:
+ * OpenAI ChatGPT (GPT-6) assisted with implementing
+ * input validation and handling invalid user input.
+ *
+ * AI Prompt:
+ * "Help implement an input validation method in Java
+ * Swing using Integer.parseInt and try-catch to ensure
+ * that the user enters a valid integer."
+ */
+
+// Reads and validates the integer entered by the user.
+private Integer readValue() {
+    String text = input.getText().trim();
+
+    if (text.isEmpty()) {
+        status.setText("Please enter a value.");
+        return null;
+    }
+
+    try {
+        return Integer.parseInt(text);
+    } catch (NumberFormatException ex) {
+        status.setText("Invalid input. Enter a whole number.");
+        return null;
+    }
+}
+
+    
 
