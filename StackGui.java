@@ -111,4 +111,13 @@ public class StackGUI extends JPanel {
         return bar;
     }
 
+      // Creates a button and connects it to its action.
+    private JButton makeButton(
+            String text, ActionListener action) {
+
+        JButton button = new JButton(text);
+        button.addActionListener(action);
+
+        return button;
+    }
 
