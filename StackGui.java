@@ -1,4 +1,6 @@
-/*
+/* Name: Aldrine Bellinario
+ * Course/Year: BSIT 2
+ * Subject: DATA STRUCTURES AND ALGORITHMS
  * Acknowledgements: OpenAI ChatGPT (GPT-6) assisted with
  * GUI layout and implementation of stack operation buttons.
  *
