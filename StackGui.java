@@ -97,4 +97,18 @@ public class StackGUI extends JPanel {
         return buttons;
     }
 
+     // Builds the status bar at the bottom of the GUI.
+    private JPanel buildStatusBar() {
+        JPanel bar = new JPanel(new BorderLayout());
+
+        bar.setBorder(
+            BorderFactory.createEmptyBorder(4, 10, 8, 10)
+        );
+
+        bar.add(status, BorderLayout.CENTER);
+        bar.add(sizeLabel, BorderLayout.EAST);
+
+        return bar;
+    }
+
 
